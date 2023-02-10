@@ -1,0 +1,14 @@
+# action.yml
+name: Skpr DB Image Pull
+description: Pull a database snapshot image
+inputs:
+  env:
+    description: The environment
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - id: skpr-deploy
+      shell: bash
+      run: skpr mysql image pull ${{ inputs.env }}
